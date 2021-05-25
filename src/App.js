@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Tmdb from './Tmdb';
+import tmdb from './tmdb';
 import MovieRow from './components/MovieRow'
 
 const Netflix = () => {
@@ -9,7 +9,7 @@ const Netflix = () => {
   useEffect(() => {
     const loadAll = async () => {
       //Pegando a lista TOTAL
-      let list = await Tmdb.getHomeList();
+      let list = await tmdb.getHomeList();
       setMovieList(list);
     }
 
