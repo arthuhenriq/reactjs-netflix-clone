@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import './App.css'
 import tmdb from './tmdb';
-import MovieRow from './components/MovieRow'
-import FeaturedMovie from './components/FeaturedMovie'
+import MovieRow from './components/MovieRow/MovieRow'
+import FeaturedMovie from './components/FeaturedMovie/FeaturedMovie'
+import Header from './components/Header/Header'
 
 const Netflix = () => {
 
   const [movieList, setMovieList] = useState([]);
   const [featuredData, setFeaturedData] = useState(null);
+  const [blackHeader, setBlackHeader] = useState(false)
 
   useEffect(() => {
     const loadAll = async () => {
@@ -26,17 +28,41 @@ const Netflix = () => {
     loadAll();
   }, [])
 
+  useEffect(() => {
+    const scrollListener = () => {
+      if (window.scrollY > 10) {
+        setBlackHeader(true)
+      }
+      else {
+        setBlackHeader(false)
+      }
+    }
+
+    window.addEventListener('scroll', scrollListener)
+
+    return () => {
+      window.removeEventListener('scroll', scrollListener)
+    }
+  }, [])
+
   return (
     <div className='page'>
 
+      <Header black={blackHeader} />
+
       {featuredData &&
-      <FeaturedMovie item={featuredData}/>
+        <FeaturedMovie item={featuredData} />
       }
       <section className='lists'>
         {movieList.map((item, key) => (
           <MovieRow key={key} title={item.title} items={item.items} />
         ))}
       </section>
+
+      <footer>
+        Feito por Arthur Henrique para estudo de react <br /> Acompanhando a live do Prof.Bonieky Lacerda (B7Web). <br /> Direitos de imagens para a Netflix. <br />
+        Dados Extraidos de Themoviedb.org.
+      </footer>
     </div>
   );
 }
