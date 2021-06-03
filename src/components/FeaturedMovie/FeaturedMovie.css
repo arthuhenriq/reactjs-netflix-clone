@@ -82,3 +82,32 @@
     font-size: 18px;
     color: #999;
 }
+
+@media (max-width: 760px) {
+    .featured {
+        height: 90vh;
+    }
+
+    .featured-Name {
+        font-size: 40px;
+    }
+
+    .featured-Info {
+        font-size: 16px;
+    }
+
+    .featured-Description {
+        font-size: 14px;
+        max-width: 100%;
+        margin-right: 30px;
+    }
+
+    .featured-MyListButton,
+    .featured-WatchButton {
+        font-size: 16px;
+    }
+
+    .featured-Genres {
+        font-size: 14px;
+    }
+}

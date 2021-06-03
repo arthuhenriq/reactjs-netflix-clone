@@ -63,6 +63,12 @@ const Netflix = () => {
         Feito por Arthur Henrique para estudo de react <br /> Acompanhando a live do Prof.Bonieky Lacerda (B7Web). <br /> Direitos de imagens para a Netflix. <br />
         Dados Extraidos de Themoviedb.org.
       </footer>
+
+      {movieList.length <= 0 &&
+      <div className='loading'>
+        <img src='https://cdn.lowgif.com/small/0534e2a412eeb281-the-counterintuitive-tech-behind-netflix-s-worldwide.gif' alt='loading'></img>
+      </div>
+      }
     </div>
   );
 }
